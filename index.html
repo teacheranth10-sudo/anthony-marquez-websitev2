@@ -41,9 +41,8 @@
   --max:1120px; color-scheme:dark;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:84px;overflow-x:clip;height:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.7 var(--body);-webkit-font-smoothing:antialiased;overflow-x:clip;padding-top:env(safe-area-inset-top,0px);
-  background-image:radial-gradient(900px 600px at 85% 4%,rgba(255,154,77,.13),transparent 60%),radial-gradient(800px 700px at 0% 40%,rgba(122,92,230,.18),transparent 60%),radial-gradient(900px 700px at 100% 75%,rgba(122,92,230,.15),transparent 60%)}
+html{scroll-behavior:smooth;scroll-padding-top:84px;overflow-x:clip}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.7 var(--body);-webkit-font-smoothing:antialiased;overflow-x:clip;padding-top:env(safe-area-inset-top,0px)}
 h1,h2,h3,p,ul,dl,dd,figure{margin:0}
 ul{padding:0;list-style:none}
 a{color:inherit}
@@ -191,13 +190,35 @@ section{padding-block:clamp(56px,8vw,104px)}
 footer{border-top:1px solid rgba(74,66,128,.6);color:var(--muted);font-size:14px}
 footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:26px}
 
+
+/* Background: one fixed layer with slow drifting glows (no tiling) */
+.bg{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;background:var(--bg)}
+.bg i{position:absolute;border-radius:50%;filter:blur(70px);animation:drift 22s ease-in-out infinite}
+.bg i:nth-child(1){width:560px;height:560px;background:rgba(255,154,77,.16);top:-160px;right:-120px}
+.bg i:nth-child(2){width:620px;height:620px;background:rgba(122,92,230,.22);top:35%;left:-220px;animation-duration:28s;animation-direction:reverse}
+.bg i:nth-child(3){width:520px;height:520px;background:rgba(122,92,230,.16);bottom:-160px;right:-100px;animation-duration:25s}
+@keyframes drift{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,-50px)}}
+
+/* Interactive boxes: lift, glow and follow the pointer */
+.card,.stat,.quote,.tile,.trow{border:1px solid transparent}
+.reveal,.tile{transition:opacity .6s,transform .35s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .3s,background .3s}
+.card,.stat,.quote,.tile{transform:perspective(800px) translateY(var(--ty,0px)) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));will-change:transform}
+.card:hover,.stat:hover,.quote:hover,.tile:hover{--ty:-6px;border-color:var(--orange);box-shadow:0 20px 38px -20px rgba(255,154,77,.55)}
+.card:hover{background:var(--card2)}
+.ico{transition:transform .35s cubic-bezier(.3,1.6,.5,1),background .3s,color .3s}
+.card:hover .ico{transform:scale(1.12) rotate(-8deg);background:var(--orange);color:var(--on-orange)}
+.tile:hover{background:#403878}
+.case{transition:border-color .3s,box-shadow .3s}
+.case:hover{border-color:rgba(255,154,77,.6);box-shadow:0 24px 50px -30px rgba(255,154,77,.4)}
+@media(prefers-reduced-motion:reduce){.bg i{animation:none}.card,.stat,.quote,.tile{transform:none!important}}
+
 /* One gentle reveal */
-.reveal{transition:opacity .6s,transform .6s}
-.reveal.pre{opacity:0;transform:translateY(14px)}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{transition:none}.reveal.pre{opacity:1;transform:none}}
+.reveal.pre{opacity:0;--ty:14px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal,.tile{transition:none}.reveal.pre{opacity:1;--ty:0px}}
 </style>
 </head>
 <body>
+<div class="bg" aria-hidden="true"><i></i><i></i><i></i></div>
 <header class="nav" id="nav">
   <div class="wrap">
     <a class="brand" href="#home">Anthony<span>.</span></a>
@@ -381,6 +402,15 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
       (function step(now){var p=Math.min(1,(now-t0)/1200);b.textContent=pre+Math.round(end*(1-Math.pow(1-p,3)))+suf;if(p<1)requestAnimationFrame(step)})(t0);
     })},{threshold:.6});
     document.querySelectorAll('.stat b').forEach(function(el){co.observe(el)});
+  }
+
+
+  // Boxes tilt gently toward the pointer (mouse only)
+  if(!rm&&matchMedia('(hover:hover)').matches){
+    document.querySelectorAll('.card,.stat,.quote,.tile').forEach(function(el){
+      el.addEventListener('pointermove',function(e){var r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;el.style.setProperty('--ry',(x*7)+'deg');el.style.setProperty('--rx',(-y*7)+'deg')});
+      el.addEventListener('pointerleave',function(){el.style.removeProperty('--ry');el.style.removeProperty('--rx')});
+    });
   }
 
   // Contact form: size the frame to the height the form reports
