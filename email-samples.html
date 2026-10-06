@@ -52,20 +52,24 @@ section{padding-block:clamp(56px,8vw,104px)}
 .menu-btn{display:none;background:none;border:1px solid var(--line);color:var(--ink);border-radius:10px;width:42px;height:42px;cursor:pointer;place-items:center}
 @media(max-width:780px){.menu-btn{display:grid}.links{position:absolute;top:68px;left:0;right:0;flex-direction:column;align-items:stretch;background:var(--bg);border-bottom:1px solid var(--line);padding:8px 16px 16px;display:none}.links.open{display:flex}.links a{padding:14px 12px;font-size:16px}.links a.cta{margin:8px 0 0;text-align:center}}
 
-/* Email sample */
+/* Email samples */
 .page-top{padding-bottom:0}
-.sample{background:var(--bg2);border:1px solid var(--line);border-radius:24px;padding:clamp(18px,3vw,36px);display:grid;gap:24px}
-.sample-top{display:flex;justify-content:space-between;gap:20px;align-items:flex-end;flex-wrap:wrap}
-.meta{font-size:14px;color:var(--orange);font-weight:600;margin-bottom:10px}
-.sample-top h2{font-size:clamp(22px,2.6vw,30px);font-weight:700;margin-bottom:10px}
-.sample-top p{color:var(--muted);max-width:56ch}
+.wrap.wide{max-width:1280px}
+.view-toggle{display:flex;justify-content:center;align-items:center;gap:14px;margin-bottom:28px;flex-wrap:wrap}
+.view-toggle>span{font:600 14px/1 var(--disp);color:var(--muted)}
 .toggle{display:inline-flex;background:var(--card);border:1px solid var(--line);border-radius:99px;padding:4px;gap:4px}
 .toggle button{font:600 14px/1 var(--disp);padding:11px 20px;border-radius:99px;border:0;background:transparent;color:var(--muted);cursor:pointer;transition:background .2s,color .2s}
 .toggle button[aria-pressed="true"]{background:var(--orange);color:var(--on-orange)}
-.viewer{background:var(--card);border-radius:18px;padding:clamp(14px,3vw,36px);display:grid;justify-items:center}
-.viewer iframe{display:block;width:100%;max-width:680px;height:900px;border:0;border-radius:10px;background:#fff;box-shadow:0 24px 48px -28px rgba(16,36,28,.45);transition:max-width .4s ease}
-.viewer.mobile iframe{max-width:390px}
+.samples{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:start}
+.sample{background:var(--bg2);border:1px solid var(--line);border-radius:24px;padding:clamp(16px,2.4vw,28px);display:grid;gap:20px;min-width:0}
+.meta{font-size:14px;color:var(--orange);font-weight:600;margin-bottom:8px}
+.sample h2{font-size:clamp(20px,2.2vw,26px);font-weight:700;margin-bottom:8px}
+.sample-head p{color:var(--muted);font-size:15.5px}
+.viewer{background:var(--card);border-radius:18px;padding:clamp(12px,2vw,24px)}
+.stage{position:relative;width:100%;height:900px;overflow:hidden}
+.stage iframe{position:absolute;top:0;left:0;border:0;background:#fff;transform-origin:0 0;box-shadow:0 0 0 1px var(--line)}
 .sample-links{display:flex;gap:12px;flex-wrap:wrap}
+@media (max-width:900px){.samples{grid-template-columns:1fr}}
 
 footer{border-top:1px solid var(--line);color:var(--muted);font-size:14px}
 footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:26px}
@@ -99,33 +103,42 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
     <div class="sec-head">
       <small>Email samples</small>
       <h1>HTML email design</h1>
-      <p>Email campaigns I have designed and built in HTML. Preview each one on desktop or mobile, or open the full email in a new tab.</p>
+      <p>Email campaigns I have designed and built in HTML. Preview them on desktop or mobile, or open any email in a new tab.</p>
     </div>
   </div>
 </section>
 
 <section style="padding-top:0">
-  <div class="wrap">
-    <div class="sample">
-      <div class="sample-top">
-        <div>
+  <div class="wrap wide">
+    <div class="view-toggle"><span>Preview as</span>
+      <div class="toggle" role="group" aria-label="Preview size">
+        <button type="button" data-view="desktop" aria-pressed="true">Desktop</button>
+        <button type="button" data-view="mobile" aria-pressed="false">Mobile</button>
+      </div>
+    </div>
+    <div class="samples">
+      <article class="sample">
+        <div class="sample-head">
           <p class="meta">Sample &middot; Harbor Grille</p>
-          <h2>StressKnotNYC: Product Email</h2>
-          <p>A luxury-style HTML email designed for StressKnotNYC.</p>
+          <h2>Harbor Grille: Luxury Email</h2>
+          <p>A luxury-style HTML email designed for Harbor Grille.</p>
         </div>
-        <div class="toggle" role="group" aria-label="Preview size">
-          <button type="button" data-view="desktop" aria-pressed="true">Desktop</button>
-          <button type="button" data-view="mobile" aria-pressed="false">Mobile</button>
+        <div class="viewer"><div class="stage"><iframe src="emails/email-luxury.html" title="Harbor Grille: Luxury Email"></iframe></div></div>
+        <div class="sample-links">
+          <a class="btn" href="emails/email-luxury.html" target="_blank" rel="noopener">Open full email</a>
         </div>
-      </div>
-      <div class="viewer" id="viewer">
-        <iframe id="emailFrame" src="emails/email-luxury.html" title="Harbor Grille luxury HTML email sample" loading="lazy"></iframe>
-      </div>
-      <div class="sample-links">
-        <a class="btn" href="emails/email-luxury.html" target="_blank" rel="noopener">Open full email
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-        <a class="btn ghost" href="index.html#contact">Get in touch</a>
-      </div>
+      </article>
+      <article class="sample">
+        <div class="sample-head">
+          <p class="meta">Sample &middot; StressKnotRx</p>
+          <h2>StressKnotRx: Back Pain Email</h2>
+          <p>An HTML email for StressKnotRx on back pain relief, combining massage, acupuncture and advanced bodywork.</p>
+        </div>
+        <div class="viewer"><div class="stage"><iframe src="emails/email-backpain.html" title="StressKnotRx: Back Pain Email"></iframe></div></div>
+        <div class="sample-links">
+          <a class="btn" href="emails/email-backpain.html" target="_blank" rel="noopener">Open full email</a>
+        </div>
+      </article>
     </div>
   </div>
 </section>
@@ -138,16 +151,38 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
   var btn=document.getElementById('menuBtn'),links=document.getElementById('links');
   btn.addEventListener('click',function(){var o=links.classList.toggle('open');btn.setAttribute('aria-expanded',o)});
 
-  var f=document.getElementById('emailFrame'),v=document.getElementById('viewer');
-  function fit(){try{var d=f.contentDocument;if(d&&d.documentElement){f.style.height=(d.documentElement.scrollHeight+4)+'px'}}catch(e){}}
-  f.addEventListener('load',fit);
-  addEventListener('resize',fit);
+  var cards=[].slice.call(document.querySelectorAll('.sample'));
+  function layout(card){
+    var stage=card.querySelector('.stage'),f=card.querySelector('iframe');
+    var mobile=document.body.classList.contains('view-mobile');
+    var W=mobile?390:640,avail=stage.clientWidth,s=Math.min(1,avail/W),h=1400;
+    f.style.width=W+'px';
+    try{
+      var d=f.contentDocument;
+      if(d&&d.documentElement&&d.body){
+        f.style.height='200px';
+        h=Math.max(d.documentElement.offsetHeight,d.body.offsetHeight)+2;
+      }
+    }catch(e){}
+    f.style.height=h+'px';
+    f.style.transform='scale('+s+')';
+    f.style.left=Math.max(0,(avail-W*s)/2)+'px';
+    stage.style.height=Math.round(h*s)+'px';
+  }
+  function layoutAll(){cards.forEach(layout)}
+  cards.forEach(function(c){
+    var f=c.querySelector('iframe');
+    f.addEventListener('load',function(){layout(c);setTimeout(function(){layout(c)},700)});
+  });
+  addEventListener('resize',layoutAll);
+  layoutAll();
+
   var tb=document.querySelectorAll('.toggle button');
   tb.forEach(function(b){
     b.addEventListener('click',function(){
       tb.forEach(function(x){x.setAttribute('aria-pressed',x===b)});
-      v.classList.toggle('mobile',b.dataset.view==='mobile');
-      setTimeout(fit,450);
+      document.body.classList.toggle('view-mobile',b.dataset.view==='mobile');
+      layoutAll();setTimeout(layoutAll,350);
     });
   });
 })();
