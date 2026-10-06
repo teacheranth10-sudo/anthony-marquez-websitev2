@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HTML Email Samples | Anthony Marquez</title>
+<meta name="description" content="HTML email design samples by Anthony Marquez, Executive Assistant and Operations Professional.">
+<meta name="author" content="Anthony Marquez">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#1B1838">
+<link rel="icon" href="icon-192.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Hanken+Grotesk:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#1B1838; --bg2:#221E45; --card:#2D2759; --card2:#352E66; --line:#4A4280;
+  --ink:#F1EEF8; --muted:#B9B4D2; --orange:#FF9A4D; --orange-d:#E8792A; --on-orange:#2A1405;
+  --disp:"Poppins","Helvetica Neue",Arial,sans-serif; --body:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --max:1120px; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px;overflow-x:clip}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.7 var(--body);-webkit-font-smoothing:antialiased;overflow-x:clip;padding-top:env(safe-area-inset-top,0px)}
+h1,h2,h3,p,ul,dl,dd,figure{margin:0}
+ul{padding:0;list-style:none}
+a{color:inherit}
+h1,h2,h3{font-family:var(--disp);letter-spacing:-.01em;line-height:1.15}
+:focus-visible{outline:2px solid var(--orange);outline-offset:3px;border-radius:8px}
+.wrap{max-width:var(--max);margin:0 auto;padding-inline:clamp(18px,4vw,40px)}
+section{padding-block:clamp(56px,8vw,104px)}
+.sec-head{text-align:center;display:grid;gap:10px;margin:0 auto clamp(32px,5vw,52px);max-width:640px}
+.sec-head small{font:600 15px/1 var(--disp);color:var(--orange)}
+.sec-head h1{font-size:clamp(32px,4.6vw,48px);font-weight:800;letter-spacing:-.02em}
+.sec-head p{color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 26px;border-radius:99px;font:600 15px/1 var(--disp);text-decoration:none;border:1.5px solid var(--orange);background:var(--orange);color:var(--on-orange);cursor:pointer;transition:background .2s,transform .2s}
+.btn:hover{background:var(--orange-d);transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--orange);background:transparent}
+.btn svg{width:16px;height:16px}
+
+/* Nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(27,24,56,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(74,66,128,.5)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{font:700 20px/1 var(--disp);text-decoration:none}
+.brand span{color:var(--orange)}
+.links{display:flex;gap:6px;align-items:center}
+.links a{font:500 14px/1 var(--disp);text-decoration:none;color:var(--muted);padding:10px 14px;border-radius:99px}
+.links a:hover,.links a.active{color:var(--ink)}
+.links a.active{background:var(--card)}
+.links a.cta{background:var(--orange);color:var(--on-orange);margin-left:6px}
+.menu-btn{display:none;background:none;border:1px solid var(--line);color:var(--ink);border-radius:10px;width:42px;height:42px;cursor:pointer;place-items:center}
+@media(max-width:780px){.menu-btn{display:grid}.links{position:absolute;top:68px;left:0;right:0;flex-direction:column;align-items:stretch;background:var(--bg);border-bottom:1px solid var(--line);padding:8px 16px 16px;display:none}.links.open{display:flex}.links a{padding:14px 12px;font-size:16px}.links a.cta{margin:8px 0 0;text-align:center}}
+
+/* Email sample */
+.page-top{padding-bottom:0}
+.sample{background:var(--bg2);border:1px solid rgba(74,66,128,.6);border-radius:24px;padding:clamp(18px,3vw,36px);display:grid;gap:24px}
+.sample-top{display:flex;justify-content:space-between;gap:20px;align-items:flex-end;flex-wrap:wrap}
+.meta{font-size:14px;color:var(--orange);font-weight:600;margin-bottom:10px}
+.sample-top h2{font-size:clamp(22px,2.6vw,30px);font-weight:700;margin-bottom:10px}
+.sample-top p{color:var(--muted);max-width:56ch}
+.toggle{display:inline-flex;background:var(--card);border:1px solid var(--line);border-radius:99px;padding:4px;gap:4px}
+.toggle button{font:600 14px/1 var(--disp);padding:11px 20px;border-radius:99px;border:0;background:transparent;color:var(--muted);cursor:pointer;transition:background .2s,color .2s}
+.toggle button[aria-pressed="true"]{background:var(--orange);color:var(--on-orange)}
+.viewer{background:var(--card);border-radius:18px;padding:clamp(14px,3vw,36px);display:grid;justify-items:center}
+.viewer iframe{display:block;width:100%;max-width:680px;height:900px;border:0;border-radius:10px;background:#fff;transition:max-width .4s ease}
+.viewer.mobile iframe{max-width:390px}
+.sample-links{display:flex;gap:12px;flex-wrap:wrap}
+
+footer{border-top:1px solid rgba(74,66,128,.6);color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:26px}
+
+/* Background glows (same as the main page) */
+.bg{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;background:var(--bg)}
+.bg i{position:absolute;border-radius:50%;filter:blur(70px);animation:drift 22s ease-in-out infinite}
+.bg i:nth-child(1){width:560px;height:560px;background:rgba(255,154,77,.16);top:-160px;right:-120px}
+.bg i:nth-child(2){width:620px;height:620px;background:rgba(122,92,230,.22);top:35%;left:-220px;animation-duration:28s;animation-direction:reverse}
+.bg i:nth-child(3){width:520px;height:520px;background:rgba(122,92,230,.16);bottom:-160px;right:-100px;animation-duration:25s}
+@keyframes drift{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,-50px)}}
+@media(prefers-reduced-motion:reduce){.bg i{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"><i></i><i></i><i></i></div>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html#home">Anthony<span>.</span></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="links"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <nav class="links" id="links">
+      <a href="index.html#about">About</a><a href="index.html#services">Services</a><a href="index.html#work">Work</a><a href="index.html#tools">Tools</a><a href="index.html#testimonials">Testimonials</a><a class="active" href="email-samples.html" aria-current="page">Email Samples</a><a class="cta" href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="page-top">
+  <div class="wrap">
+    <div class="sec-head">
+      <small>Email samples</small>
+      <h1>HTML email design</h1>
+      <p>Email campaigns I have designed and built in HTML. Preview each one on desktop or mobile, or open the full email in a new tab.</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sample">
+      <div class="sample-top">
+        <div>
+          <p class="meta">Sample &middot; Harbor Grille</p>
+          <h2>Harbor Grille: Luxury Email</h2>
+          <p>A luxury-style HTML email designed for Harbor Grille.</p>
+        </div>
+        <div class="toggle" role="group" aria-label="Preview size">
+          <button type="button" data-view="desktop" aria-pressed="true">Desktop</button>
+          <button type="button" data-view="mobile" aria-pressed="false">Mobile</button>
+        </div>
+      </div>
+      <div class="viewer" id="viewer">
+        <iframe id="emailFrame" src="emails/email-luxury.html" title="Harbor Grille luxury HTML email sample" loading="lazy"></iframe>
+      </div>
+      <div class="sample-links">
+        <a class="btn" href="emails/email-luxury.html" target="_blank" rel="noopener">Open full email
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+        <a class="btn ghost" href="index.html#contact">Get in touch</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>&copy; 2026 Anthony Marquez</span><span>Executive Assistant &amp; Operations Professional</span></div></footer>
+
+<script>
+(function(){
+  var btn=document.getElementById('menuBtn'),links=document.getElementById('links');
+  btn.addEventListener('click',function(){var o=links.classList.toggle('open');btn.setAttribute('aria-expanded',o)});
+
+  var f=document.getElementById('emailFrame'),v=document.getElementById('viewer');
+  function fit(){try{var d=f.contentDocument;if(d&&d.documentElement){f.style.height=(d.documentElement.scrollHeight+4)+'px'}}catch(e){}}
+  f.addEventListener('load',fit);
+  addEventListener('resize',fit);
+  var tb=document.querySelectorAll('.toggle button');
+  tb.forEach(function(b){
+    b.addEventListener('click',function(){
+      tb.forEach(function(x){x.setAttribute('aria-pressed',x===b)});
+      v.classList.toggle('mobile',b.dataset.view==='mobile');
+      setTimeout(fit,450);
+    });
+  });
+})();
+</script>
+</body>
+</html>
