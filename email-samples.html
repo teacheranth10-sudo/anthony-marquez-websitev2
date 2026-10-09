@@ -40,27 +40,28 @@ section{padding-block:clamp(56px,8vw,104px)}
 .btn svg{width:16px;height:16px}
 
 /* Nav */
-.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:rgba(255,255,255,.94);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);border-bottom:1px solid rgba(214,225,242,.9);transition:box-shadow .3s}
-.nav.scrolled{box-shadow:0 10px 30px -18px rgba(14,27,51,.35)}
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--orange);transition:box-shadow .3s}
+.nav.scrolled{box-shadow:0 10px 30px -14px rgba(14,27,51,.55)}
 .topbar{background:var(--ink);color:#C9D6EE;font-size:13px;max-height:40px;overflow:hidden;transition:max-height .3s ease}
 .nav.scrolled .topbar{max-height:0}
 .topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;height:36px}
 .avail{display:inline-flex;align-items:center;gap:9px}
 .avail i{width:8px;height:8px;border-radius:50%;background:#4ADE80;box-shadow:0 0 0 0 rgba(74,222,128,.5);animation:pulse 2.4s ease-out infinite}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(74,222,128,.5)}70%,100%{box-shadow:0 0 0 8px rgba(74,222,128,0)}}
-.mainbar{position:relative}
+.mainbar{position:relative;background:linear-gradient(95deg,#123C91 0%,#1D5FD6 60%,#2A72E0 100%)}
 .mainbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;height:72px;transition:height .25s ease}
 .nav.scrolled .mainbar .wrap{height:62px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex:none}
-.mark{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--orange),#4F8BEA);color:#fff;display:grid;place-items:center;font:700 15px/1 var(--disp);letter-spacing:.02em;transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
+.mark{width:44px;height:44px;border-radius:50%;overflow:hidden;background:rgba(255,255,255,.2);border:2px solid #fff;flex:none;transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
+.mark img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;display:block}
 .brand:hover .mark{transform:rotate(-6deg) scale(1.06)}
 .brand-text{display:grid;gap:3px;line-height:1.1}
-.brand-text b{font:700 17px/1.1 var(--disp);letter-spacing:-.01em;color:var(--ink)}
-.brand-text small{font-size:12px;color:var(--muted);font-weight:500}
+.brand-text b{font:700 17px/1.1 var(--disp);letter-spacing:-.01em;color:#fff}
+.brand-text small{font-size:12px;color:rgba(255,255,255,.8);font-weight:500}
 .links{display:flex;align-items:center;gap:clamp(18px,2.4vw,34px)}
-.links>a,.dd-toggle{position:relative;display:inline-flex;align-items:center;gap:6px;font:500 15px/1 var(--disp);color:var(--muted);text-decoration:none;padding:10px 0;transition:color .2s}
-.links>a::after,.dd-toggle::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:2px;border-radius:2px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.2,.8,.2,1)}
-.links>a:hover,.dd-toggle:hover,.links>a.active,.dd-toggle.active,.dd:hover .dd-toggle{color:var(--ink)}
+.links>a,.dd-toggle{position:relative;display:inline-flex;align-items:center;gap:6px;font:500 15px/1 var(--disp);color:rgba(255,255,255,.85);text-decoration:none;padding:10px 0;transition:color .2s}
+.links>a::after,.dd-toggle::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:2px;border-radius:2px;background:#fff;transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.links>a:hover,.dd-toggle:hover,.links>a.active,.dd-toggle.active,.dd:hover .dd-toggle{color:#fff}
 .links>a:hover::after,.dd-toggle:hover::after,.links>a.active::after,.dd-toggle.active::after,.dd:hover .dd-toggle::after{transform:scaleX(1)}
 .dd{position:relative}
 .dd::after{content:"";position:absolute;left:-10px;right:-10px;top:100%;height:14px}
@@ -73,15 +74,15 @@ section{padding-block:clamp(56px,8vw,104px)}
 .dd-menu a span{font-size:13px;color:var(--muted);line-height:1.3}
 .dd-menu a:hover{background:var(--card)}
 .nav-actions{display:flex;align-items:center;gap:10px;flex:none}
-.btn-nav{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:99px;background:var(--orange);color:#fff;font:600 14px/1 var(--disp);text-decoration:none;transition:background .2s,transform .2s,box-shadow .2s}
+.btn-nav{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:99px;background:#fff;color:var(--orange);font:600 14px/1 var(--disp);text-decoration:none;transition:background .2s,transform .2s,box-shadow .2s}
 .btn-nav svg{width:14px;height:14px;transition:transform .25s}
-.btn-nav:hover{background:var(--orange-d);transform:translateY(-1px);box-shadow:0 12px 22px -12px var(--orange)}
+.btn-nav:hover{background:#EAF1FF;transform:translateY(-1px);box-shadow:0 12px 22px -12px rgba(14,27,51,.6)}
 .btn-nav:hover svg{transform:translateX(3px)}
-.m-cta{display:none}
-.nav-progress{position:absolute;left:0;bottom:-1px;height:3px;width:100%;background:linear-gradient(90deg,var(--orange),#59A6FF);transform:scaleX(0);transform-origin:0 50%;pointer-events:none}
-.menu-btn{display:none;width:44px;height:44px;border:1px solid var(--line);border-radius:12px;background:var(--bg);cursor:pointer;place-items:center;padding:0}
+.links>a.m-cta{display:none}
+.nav-progress{position:absolute;left:0;bottom:0;height:3px;width:100%;background:linear-gradient(90deg,#fff,#A9D1FF);transform:scaleX(0);transform-origin:0 50%;pointer-events:none}
+.menu-btn{display:none;width:44px;height:44px;border:1px solid rgba(255,255,255,.55);border-radius:12px;background:rgba(255,255,255,.12);cursor:pointer;place-items:center;padding:0}
 .bars{position:relative;width:18px;height:14px;display:block}
-.bars i{position:absolute;left:0;width:100%;height:2px;border-radius:2px;background:var(--ink);transition:transform .3s ease,opacity .2s,top .3s}
+.bars i{position:absolute;left:0;width:100%;height:2px;border-radius:2px;background:#fff;transition:transform .3s ease,opacity .2s,top .3s}
 .bars i:nth-child(1){top:0}.bars i:nth-child(2){top:6px}.bars i:nth-child(3){top:12px}
 .menu-btn[aria-expanded="true"] .bars i:nth-child(1){top:6px;transform:rotate(45deg)}
 .menu-btn[aria-expanded="true"] .bars i:nth-child(2){opacity:0}
@@ -91,16 +92,17 @@ body.menu-open{overflow:hidden}
 @media(max-width:980px){
   .menu-btn{display:grid}
   .btn-nav{display:none}
-  .links{position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:rgba(255,255,255,.99);border-bottom:1px solid var(--line);padding:8px clamp(18px,4vw,40px) 24px;max-height:calc(100vh - 120px);max-height:calc(100dvh - 120px);overflow:auto;box-shadow:0 30px 50px -30px rgba(14,27,51,.4);opacity:0;visibility:hidden;transform:translateY(-10px);transition:opacity .25s,transform .3s,visibility 0s linear .3s}
+  .links{position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:#fff;border-bottom:1px solid var(--line);padding:8px clamp(18px,4vw,40px) 24px;max-height:calc(100vh - 120px);max-height:calc(100dvh - 120px);overflow:auto;box-shadow:0 30px 50px -30px rgba(14,27,51,.4);opacity:0;visibility:hidden;transform:translateY(-10px);transition:opacity .25s,transform .3s,visibility 0s linear .3s}
   .links.open{opacity:1;visibility:visible;transform:none;transition:opacity .25s,transform .3s,visibility 0s}
-  .links>a,.dd-toggle{font-size:18px;padding:16px 4px;border-bottom:1px solid var(--line);opacity:0;transform:translateY(8px);transition:opacity .3s,transform .3s,color .2s}
+  .links>a,.dd-toggle{font-size:18px;padding:16px 4px;color:var(--ink);border-bottom:1px solid var(--line);opacity:0;transform:translateY(8px);transition:opacity .3s,transform .3s,color .2s}
+  .links>a:hover,.dd-toggle:hover{color:var(--orange)}
   .links.open>a,.links.open .dd-toggle{opacity:1;transform:none}
   .links>a::after,.dd-toggle::after,.dd-toggle svg,.dd::after{display:none}
   .links.open>a:nth-of-type(1){transition-delay:.04s}.links.open .dd-toggle{transition-delay:.12s}.links.open>a:nth-of-type(2){transition-delay:.08s}.links.open>a:nth-of-type(3){transition-delay:.16s}.links.open>a:nth-of-type(4){transition-delay:.2s}.links.open>a:nth-of-type(5){transition-delay:.24s}
   .links>a.active,.dd-toggle.active{color:var(--orange)}
   .dd-menu{position:static;min-width:0;opacity:1;visibility:visible;transform:none;box-shadow:none;border:0;border-radius:0;background:transparent;padding:4px 0 8px 14px;border-left:2px solid var(--line);margin:8px 0 8px 4px}
   .dd-menu a{padding:10px 12px}
-  .m-cta{display:block;margin:20px 0 0;text-align:center;padding:16px;border-radius:99px;background:var(--orange);color:#fff;font:600 16px/1 var(--disp);text-decoration:none;border:0}
+  .links>a.m-cta{display:block;margin:20px 0 0;text-align:center;padding:16px;border-radius:99px;background:var(--orange);color:#fff;font:600 16px/1 var(--disp);text-decoration:none;border:0}
 }
 @media(max-width:640px){.topinfo{display:none}.topbar .wrap{justify-content:center}}
 @media(prefers-reduced-motion:reduce){.avail i{animation:none}}
@@ -144,10 +146,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
 <div class="bg" aria-hidden="true"><i></i><i></i><i></i></div>
 
 <header class="nav" id="nav">
-  <div class="topbar"><div class="wrap"><span class="avail"><i></i>Available for full-time and project roles</span><span class="topinfo">Fully remote &middot; US, European &amp; Asian hours</span></div></div>
+  <div class="topbar"><div class="wrap"><span class="avail"><i></i>Available for full-time and project roles</span><span class="topinfo">Flexible hours</span></div></div>
   <div class="mainbar">
     <div class="wrap">
-      <a class="brand" href="index.html#home" aria-label="Anthony Marquez, home"><span class="mark">AM</span><span class="brand-text"><b>Anthony Marquez</b><small>Executive Assistant &amp; Operations</small></span></a>
+      <a class="brand" href="index.html#home" aria-label="Anthony Marquez, home"><span class="mark"><img src="img/portrait.webp" alt="" width="44" height="44" onerror="this.style.display='none'"></span><span class="brand-text"><b>Anthony Marquez</b><small>Executive Assistant &amp; Operations</small></span></a>
       <nav class="links" id="links" aria-label="Main">
         <a href="index.html#about">About</a>
         <a href="index.html#services">Services</a>
@@ -196,12 +198,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
       <article class="sample">
         <div class="sample-head">
           <p class="meta">StressKnotNYC &middot; Email Design</p>
-          <h2>New Product Launch Email</h2>
-          <p><b>The company:</b> StressKnotNYC is a mobile wellness company in New York City offering therapeutic massage, acupuncture and advanced bodywork, brought to clients as a personalized recovery experience.</p>
-          <p><b>The email:</b> Sample work introducing a new product to past customers and to new, incoming customers. It was designed in Figma or Canva and built to send through Klaviyo or GoHighLevel.</p>
+          <h2>Customer Email Campaign</h2>
+          <p><b>The company:</b> StressKnotNYC is a mobile wellness company based in New York City, offering therapeutic massage, acupuncture, and advanced bodywork through personalized recovery experiences.</p>
+          <p><b>The email:</b> A sample marketing email designed to engage existing and prospective customers, showcase the company&rsquo;s services, and encourage bookings. Created in Figma or Canva and formatted for email marketing platforms such as Klaviyo or GoHighLevel.</p>
           <ul class="sample-tags"><li>Email Design</li><li>Figma</li><li>Canva</li><li>Klaviyo</li><li>GoHighLevel</li></ul>
         </div>
-        <div class="viewer"><div class="stage"><iframe src="emails/email-luxury.html" title="StressKnotNYC: New Product Launch Email"></iframe></div></div>
+        <div class="viewer"><div class="stage"><iframe src="emails/email-luxury.html" title="Customer Email Campaign"></iframe></div></div>
         <div class="sample-links">
           <a class="btn" href="emails/email-luxury.html" target="_blank" rel="noopener">Open full email</a>
         </div>
@@ -209,10 +211,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
       <article class="sample">
         <div class="sample-head">
           <p class="meta">StressKnotNYC &middot; Email Design</p>
-          <h2>Weekly Update: Back Pain</h2>
-          <p><b>The email:</b> One of the emails in StressKnotNYC&rsquo;s weekly updates to subscribers. Each one follows the topics we are talking about on our social media at the time, and this one covers back pain relief through massage, acupuncture and advanced bodywork.</p>
+          <h2>Weekly Update: Back Pain Relief</h2>
+          <p><b>The email:</b> Part of StressKnotNYC&rsquo;s weekly email updates to subscribers, featuring topics aligned with the company&rsquo;s ongoing social media content. This edition focuses on back pain relief and highlights how massage therapy, acupuncture, and advanced bodywork can support recovery, ease muscle tension, and improve mobility.</p>
         </div>
-        <div class="viewer"><div class="stage"><iframe src="emails/email-backpain.html" title="StressKnotNYC: Weekly Update on Back Pain"></iframe></div></div>
+        <div class="viewer"><div class="stage"><iframe src="emails/email-backpain.html" title="Weekly Update: Back Pain Relief"></iframe></div></div>
         <div class="sample-links">
           <a class="btn" href="emails/email-backpain.html" target="_blank" rel="noopener">Open full email</a>
         </div>
