@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Sample Work | Anthony Marquez</title>
-<meta name="description" content="Sample work by Anthony Marquez, including HTML email designs.">
+<meta name="description" content="Sample work by Anthony Marquez, including email designs.">
 <meta name="author" content="Anthony Marquez">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#FFFFFF">
@@ -14,13 +14,13 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Hanken+Grotesk:wght@400;500;600&display=swap">
 <style>
 :root{
-  --bg:#FFFFFF; --bg2:#F4F8F5; --card:#F3F7F4; --card2:#E7F0EA; --line:#D5E2D9;
-  --ink:#10241C; --muted:#55675E; --orange:#12805F; --orange-d:#0D6A4F; --on-orange:#FFFFFF; /* --orange is now the green accent */
+  --bg:#FFFFFF; --bg2:#F3F7FD; --card:#F1F6FD; --card2:#E4EEFB; --line:#D6E1F2;
+  --ink:#0E1B33; --muted:#566178; --orange:#1D5FD6; --orange-d:#1649A8; --on-orange:#FFFFFF; /* --orange is now the blue accent */
   --disp:"Poppins","Helvetica Neue",Arial,sans-serif; --body:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
   --max:1120px; color-scheme:light;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:84px;overflow-x:clip}
+html{scroll-behavior:smooth;scroll-padding-top:100px;overflow-x:clip}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.7 var(--body);-webkit-font-smoothing:antialiased;overflow-x:clip;padding-top:env(safe-area-inset-top,0px)}
 h1,h2,h3,p,ul,dl,dd,figure{margin:0}
 ul{padding:0;list-style:none}
@@ -40,17 +40,70 @@ section{padding-block:clamp(56px,8vw,104px)}
 .btn svg{width:16px;height:16px}
 
 /* Nav */
-.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(213,226,217,.9)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
-.brand{font:700 20px/1 var(--disp);text-decoration:none}
-.brand span{color:var(--orange)}
-.links{display:flex;gap:6px;align-items:center}
-.links a{font:500 14px/1 var(--disp);text-decoration:none;color:var(--muted);padding:10px 14px;border-radius:99px}
-.links a:hover,.links a.active{color:var(--ink)}
-.links a.active{background:var(--card)}
-.links a.cta{background:var(--orange);color:var(--on-orange);margin-left:6px}
-.menu-btn{display:none;background:none;border:1px solid var(--line);color:var(--ink);border-radius:10px;width:42px;height:42px;cursor:pointer;place-items:center}
-@media(max-width:780px){.menu-btn{display:grid}.links{position:absolute;top:68px;left:0;right:0;flex-direction:column;align-items:stretch;background:var(--bg);border-bottom:1px solid var(--line);padding:8px 16px 16px;display:none}.links.open{display:flex}.links a{padding:14px 12px;font-size:16px}.links a.cta{margin:8px 0 0;text-align:center}}
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:rgba(255,255,255,.94);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);border-bottom:1px solid rgba(214,225,242,.9);transition:box-shadow .3s}
+.nav.scrolled{box-shadow:0 10px 30px -18px rgba(14,27,51,.35)}
+.topbar{background:var(--ink);color:#C9D6EE;font-size:13px;max-height:40px;overflow:hidden;transition:max-height .3s ease}
+.nav.scrolled .topbar{max-height:0}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;height:36px}
+.avail{display:inline-flex;align-items:center;gap:9px}
+.avail i{width:8px;height:8px;border-radius:50%;background:#4ADE80;box-shadow:0 0 0 0 rgba(74,222,128,.5);animation:pulse 2.4s ease-out infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(74,222,128,.5)}70%,100%{box-shadow:0 0 0 8px rgba(74,222,128,0)}}
+.mainbar{position:relative}
+.mainbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;height:72px;transition:height .25s ease}
+.nav.scrolled .mainbar .wrap{height:62px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex:none}
+.mark{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--orange),#4F8BEA);color:#fff;display:grid;place-items:center;font:700 15px/1 var(--disp);letter-spacing:.02em;transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
+.brand:hover .mark{transform:rotate(-6deg) scale(1.06)}
+.brand-text{display:grid;gap:3px;line-height:1.1}
+.brand-text b{font:700 17px/1.1 var(--disp);letter-spacing:-.01em;color:var(--ink)}
+.brand-text small{font-size:12px;color:var(--muted);font-weight:500}
+.links{display:flex;align-items:center;gap:clamp(18px,2.4vw,34px)}
+.links>a,.dd-toggle{position:relative;display:inline-flex;align-items:center;gap:6px;font:500 15px/1 var(--disp);color:var(--muted);text-decoration:none;padding:10px 0;transition:color .2s}
+.links>a::after,.dd-toggle::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:2px;border-radius:2px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.links>a:hover,.dd-toggle:hover,.links>a.active,.dd-toggle.active,.dd:hover .dd-toggle{color:var(--ink)}
+.links>a:hover::after,.dd-toggle:hover::after,.links>a.active::after,.dd-toggle.active::after,.dd:hover .dd-toggle::after{transform:scaleX(1)}
+.dd{position:relative}
+.dd::after{content:"";position:absolute;left:-10px;right:-10px;top:100%;height:14px}
+.dd-toggle svg{width:12px;height:12px;transition:transform .25s}
+.dd:hover .dd-toggle svg,.dd:focus-within .dd-toggle svg{transform:rotate(180deg)}
+.dd-menu{position:absolute;top:calc(100% + 12px);left:-18px;min-width:290px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:8px;box-shadow:0 24px 50px -24px rgba(14,27,51,.4);opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .2s,transform .2s,visibility 0s linear .2s}
+.dd:hover .dd-menu,.dd:focus-within .dd-menu{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+.dd-menu a{display:grid;gap:3px;padding:12px 14px;border-radius:10px;text-decoration:none;transition:background .2s}
+.dd-menu a b{font:600 14px/1.2 var(--disp);color:var(--ink)}
+.dd-menu a span{font-size:13px;color:var(--muted);line-height:1.3}
+.dd-menu a:hover{background:var(--card)}
+.nav-actions{display:flex;align-items:center;gap:10px;flex:none}
+.btn-nav{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:99px;background:var(--orange);color:#fff;font:600 14px/1 var(--disp);text-decoration:none;transition:background .2s,transform .2s,box-shadow .2s}
+.btn-nav svg{width:14px;height:14px;transition:transform .25s}
+.btn-nav:hover{background:var(--orange-d);transform:translateY(-1px);box-shadow:0 12px 22px -12px var(--orange)}
+.btn-nav:hover svg{transform:translateX(3px)}
+.m-cta{display:none}
+.nav-progress{position:absolute;left:0;bottom:-1px;height:3px;width:100%;background:linear-gradient(90deg,var(--orange),#59A6FF);transform:scaleX(0);transform-origin:0 50%;pointer-events:none}
+.menu-btn{display:none;width:44px;height:44px;border:1px solid var(--line);border-radius:12px;background:var(--bg);cursor:pointer;place-items:center;padding:0}
+.bars{position:relative;width:18px;height:14px;display:block}
+.bars i{position:absolute;left:0;width:100%;height:2px;border-radius:2px;background:var(--ink);transition:transform .3s ease,opacity .2s,top .3s}
+.bars i:nth-child(1){top:0}.bars i:nth-child(2){top:6px}.bars i:nth-child(3){top:12px}
+.menu-btn[aria-expanded="true"] .bars i:nth-child(1){top:6px;transform:rotate(45deg)}
+.menu-btn[aria-expanded="true"] .bars i:nth-child(2){opacity:0}
+.menu-btn[aria-expanded="true"] .bars i:nth-child(3){top:6px;transform:rotate(-45deg)}
+body.menu-open{overflow:hidden}
+@media(max-width:1100px){.brand-text small{display:none}}
+@media(max-width:980px){
+  .menu-btn{display:grid}
+  .btn-nav{display:none}
+  .links{position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:rgba(255,255,255,.99);border-bottom:1px solid var(--line);padding:8px clamp(18px,4vw,40px) 24px;max-height:calc(100vh - 120px);max-height:calc(100dvh - 120px);overflow:auto;box-shadow:0 30px 50px -30px rgba(14,27,51,.4);opacity:0;visibility:hidden;transform:translateY(-10px);transition:opacity .25s,transform .3s,visibility 0s linear .3s}
+  .links.open{opacity:1;visibility:visible;transform:none;transition:opacity .25s,transform .3s,visibility 0s}
+  .links>a,.dd-toggle{font-size:18px;padding:16px 4px;border-bottom:1px solid var(--line);opacity:0;transform:translateY(8px);transition:opacity .3s,transform .3s,color .2s}
+  .links.open>a,.links.open .dd-toggle{opacity:1;transform:none}
+  .links>a::after,.dd-toggle::after,.dd-toggle svg,.dd::after{display:none}
+  .links.open>a:nth-of-type(1){transition-delay:.04s}.links.open .dd-toggle{transition-delay:.12s}.links.open>a:nth-of-type(2){transition-delay:.08s}.links.open>a:nth-of-type(3){transition-delay:.16s}.links.open>a:nth-of-type(4){transition-delay:.2s}.links.open>a:nth-of-type(5){transition-delay:.24s}
+  .links>a.active,.dd-toggle.active{color:var(--orange)}
+  .dd-menu{position:static;min-width:0;opacity:1;visibility:visible;transform:none;box-shadow:none;border:0;border-radius:0;background:transparent;padding:4px 0 8px 14px;border-left:2px solid var(--line);margin:8px 0 8px 4px}
+  .dd-menu a{padding:10px 12px}
+  .m-cta{display:block;margin:20px 0 0;text-align:center;padding:16px;border-radius:99px;background:var(--orange);color:#fff;font:600 16px/1 var(--disp);text-decoration:none;border:0}
+}
+@media(max-width:640px){.topinfo{display:none}.topbar .wrap{justify-content:center}}
+@media(prefers-reduced-motion:reduce){.avail i{animation:none}}
 
 /* Email samples */
 .page-top{padding-bottom:0}
@@ -65,6 +118,10 @@ section{padding-block:clamp(56px,8vw,104px)}
 .meta{font-size:14px;color:var(--orange);font-weight:600;margin-bottom:8px}
 .sample h2{font-size:clamp(20px,2.2vw,26px);font-weight:700;margin-bottom:8px}
 .sample-head p{color:var(--muted);font-size:15.5px}
+.sample-head p+p{margin-top:10px}
+.sample-head p b{color:var(--ink);font-weight:600}
+.sample-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.sample-tags li{font-size:13px;font-weight:600;padding:6px 14px;border-radius:99px;background:var(--card);color:var(--ink);border:1px solid var(--line)}
 .viewer{background:var(--card);border-radius:18px;padding:clamp(12px,2vw,24px)}
 .stage{position:relative;width:100%;height:900px;overflow:hidden}
 .stage iframe{position:absolute;top:0;left:0;border:0;background:#fff;transform-origin:0 0;box-shadow:0 0 0 1px var(--line)}
@@ -87,12 +144,31 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
 <div class="bg" aria-hidden="true"><i></i><i></i><i></i></div>
 
 <header class="nav" id="nav">
-  <div class="wrap">
-    <a class="brand" href="index.html#home">Anthony<span>.</span></a>
-    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="links"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
-    <nav class="links" id="links">
-      <a href="index.html#about">About</a><a href="index.html#services">Services</a><a href="index.html#work">Work</a><a href="index.html#tools">Tools</a><a href="index.html#testimonials">Testimonials</a><a class="active" href="email-samples.html" aria-current="page">Sample Work</a><a class="cta" href="index.html#contact">Contact</a>
-    </nav>
+  <div class="topbar"><div class="wrap"><span class="avail"><i></i>Available for full-time and project roles</span><span class="topinfo">Fully remote &middot; US, European &amp; Asian hours</span></div></div>
+  <div class="mainbar">
+    <div class="wrap">
+      <a class="brand" href="index.html#home" aria-label="Anthony Marquez, home"><span class="mark">AM</span><span class="brand-text"><b>Anthony Marquez</b><small>Executive Assistant &amp; Operations</small></span></a>
+      <nav class="links" id="links" aria-label="Main">
+        <a href="index.html#about">About</a>
+        <a href="index.html#services">Services</a>
+        <div class="dd">
+          <a class="dd-toggle active" href="index.html#work" aria-haspopup="true">Work <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a>
+          <div class="dd-menu">
+            <a href="index.html#work"><b>Case Studies</b><span>Results, with the numbers</span></a>
+            <a href="index.html#experience"><b>Experience</b><span>Where I have worked</span></a>
+            <a href="email-samples.html" aria-current="page"><b>Sample Work</b><span>Email designs and more</span></a>
+          </div>
+        </div>
+        <a href="index.html#tools">Tools</a>
+        <a href="index.html#testimonials">Testimonials</a>
+        <a class="m-cta" href="index.html#contact">Get in touch</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="btn-nav" href="index.html#contact">Get in touch <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="links"><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span></button>
+      </div>
+    </div>
+    <div class="nav-progress" id="navBar" aria-hidden="true"></div>
   </div>
 </header>
 
@@ -120,10 +196,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
       <article class="sample">
         <div class="sample-head">
           <p class="meta">StressKnotNYC &middot; Email Design</p>
-          <h2>StressKnotNYC: Luxury Email</h2>
-          <p>A luxury-style HTML email designed for StressKnotNYC.</p>
+          <h2>New Product Launch Email</h2>
+          <p><b>The company:</b> StressKnotNYC is a mobile wellness company in New York City offering therapeutic massage, acupuncture and advanced bodywork, brought to clients as a personalized recovery experience.</p>
+          <p><b>The email:</b> Sample work introducing a new product to past customers and to new, incoming customers. It was designed in Figma or Canva and built to send through Klaviyo or GoHighLevel.</p>
+          <ul class="sample-tags"><li>Email Design</li><li>Figma</li><li>Canva</li><li>Klaviyo</li><li>GoHighLevel</li></ul>
         </div>
-        <div class="viewer"><div class="stage"><iframe src="emails/email-luxury.html" title="StressKnotNYC: Luxury Email"></iframe></div></div>
+        <div class="viewer"><div class="stage"><iframe src="emails/email-luxury.html" title="StressKnotNYC: New Product Launch Email"></iframe></div></div>
         <div class="sample-links">
           <a class="btn" href="emails/email-luxury.html" target="_blank" rel="noopener">Open full email</a>
         </div>
@@ -131,10 +209,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
       <article class="sample">
         <div class="sample-head">
           <p class="meta">StressKnotNYC &middot; Email Design</p>
-          <h2>StressKnotNYC: Back Pain Email</h2>
-          <p>An HTML email for StressKnotNYC on back pain relief, combining massage, acupuncture and advanced bodywork.</p>
+          <h2>Weekly Update: Back Pain</h2>
+          <p><b>The email:</b> One of the emails in StressKnotNYC&rsquo;s weekly updates to subscribers. Each one follows the topics we are talking about on our social media at the time, and this one covers back pain relief through massage, acupuncture and advanced bodywork.</p>
         </div>
-        <div class="viewer"><div class="stage"><iframe src="emails/email-backpain.html" title="StressKnotNYC: Back Pain Email"></iframe></div></div>
+        <div class="viewer"><div class="stage"><iframe src="emails/email-backpain.html" title="StressKnotNYC: Weekly Update on Back Pain"></iframe></div></div>
         <div class="sample-links">
           <a class="btn" href="emails/email-backpain.html" target="_blank" rel="noopener">Open full email</a>
         </div>
@@ -148,8 +226,19 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
 
 <script>
 (function(){
-  var btn=document.getElementById('menuBtn'),links=document.getElementById('links');
-  btn.addEventListener('click',function(){var o=links.classList.toggle('open');btn.setAttribute('aria-expanded',o)});
+  // Nav
+  var nav=document.getElementById('nav'),btn=document.getElementById('menuBtn'),links=document.getElementById('links'),bar=document.getElementById('navBar');
+  function setOpen(o){links.classList.toggle('open',o);btn.setAttribute('aria-expanded',o);btn.setAttribute('aria-label',o?'Close menu':'Open menu');document.body.classList.toggle('menu-open',o)}
+  btn.addEventListener('click',function(){setOpen(!links.classList.contains('open'))});
+  links.addEventListener('click',function(e){if(e.target.closest('a'))setOpen(false)});
+  addEventListener('keydown',function(e){if(e.key==='Escape')setOpen(false)});
+  document.addEventListener('click',function(e){if(links.classList.contains('open')&&!e.target.closest('.nav'))setOpen(false)});
+  addEventListener('resize',function(){if(innerWidth>980)setOpen(false)});
+  function onScroll(){var y=scrollY,h=document.documentElement.scrollHeight-innerHeight;nav.classList.toggle('scrolled',y>8);bar.style.transform='scaleX('+(h>0?Math.min(1,y/h):0)+')'}
+  addEventListener('scroll',onScroll,{passive:true});onScroll();
+  var map={};
+  links.querySelectorAll('a').forEach(function(a){var h=a.getAttribute('href');if(h&&h.charAt(0)==='#'&&!a.classList.contains('m-cta')&&!map[h.slice(1)])map[h.slice(1)]=a});
+  var tg=links.querySelector('.dd-toggle');if(tg)map.experience=tg;
 
   var cards=[].slice.call(document.querySelectorAll('.sample'));
   function layout(card){
