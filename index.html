@@ -59,27 +59,28 @@ section{padding-block:clamp(56px,8vw,104px)}
 .btn.ghost:hover{border-color:var(--orange);background:transparent}
 
 /* Nav */
-.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:rgba(255,255,255,.94);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);border-bottom:1px solid rgba(214,225,242,.9);transition:box-shadow .3s}
-.nav.scrolled{box-shadow:0 10px 30px -18px rgba(14,27,51,.35)}
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--orange);transition:box-shadow .3s}
+.nav.scrolled{box-shadow:0 10px 30px -14px rgba(14,27,51,.55)}
 .topbar{background:var(--ink);color:#C9D6EE;font-size:13px;max-height:40px;overflow:hidden;transition:max-height .3s ease}
 .nav.scrolled .topbar{max-height:0}
 .topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;height:36px}
 .avail{display:inline-flex;align-items:center;gap:9px}
 .avail i{width:8px;height:8px;border-radius:50%;background:#4ADE80;box-shadow:0 0 0 0 rgba(74,222,128,.5);animation:pulse 2.4s ease-out infinite}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(74,222,128,.5)}70%,100%{box-shadow:0 0 0 8px rgba(74,222,128,0)}}
-.mainbar{position:relative}
+.mainbar{position:relative;background:linear-gradient(95deg,#123C91 0%,#1D5FD6 60%,#2A72E0 100%)}
 .mainbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;height:72px;transition:height .25s ease}
 .nav.scrolled .mainbar .wrap{height:62px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex:none}
-.mark{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--orange),#4F8BEA);color:#fff;display:grid;place-items:center;font:700 15px/1 var(--disp);letter-spacing:.02em;transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
+.mark{width:44px;height:44px;border-radius:50%;overflow:hidden;background:rgba(255,255,255,.2);border:2px solid #fff;flex:none;transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
+.mark img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;display:block}
 .brand:hover .mark{transform:rotate(-6deg) scale(1.06)}
 .brand-text{display:grid;gap:3px;line-height:1.1}
-.brand-text b{font:700 17px/1.1 var(--disp);letter-spacing:-.01em;color:var(--ink)}
-.brand-text small{font-size:12px;color:var(--muted);font-weight:500}
+.brand-text b{font:700 17px/1.1 var(--disp);letter-spacing:-.01em;color:#fff}
+.brand-text small{font-size:12px;color:rgba(255,255,255,.8);font-weight:500}
 .links{display:flex;align-items:center;gap:clamp(18px,2.4vw,34px)}
-.links>a,.dd-toggle{position:relative;display:inline-flex;align-items:center;gap:6px;font:500 15px/1 var(--disp);color:var(--muted);text-decoration:none;padding:10px 0;transition:color .2s}
-.links>a::after,.dd-toggle::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:2px;border-radius:2px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.2,.8,.2,1)}
-.links>a:hover,.dd-toggle:hover,.links>a.active,.dd-toggle.active,.dd:hover .dd-toggle{color:var(--ink)}
+.links>a,.dd-toggle{position:relative;display:inline-flex;align-items:center;gap:6px;font:500 15px/1 var(--disp);color:rgba(255,255,255,.85);text-decoration:none;padding:10px 0;transition:color .2s}
+.links>a::after,.dd-toggle::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:2px;border-radius:2px;background:#fff;transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.links>a:hover,.dd-toggle:hover,.links>a.active,.dd-toggle.active,.dd:hover .dd-toggle{color:#fff}
 .links>a:hover::after,.dd-toggle:hover::after,.links>a.active::after,.dd-toggle.active::after,.dd:hover .dd-toggle::after{transform:scaleX(1)}
 .dd{position:relative}
 .dd::after{content:"";position:absolute;left:-10px;right:-10px;top:100%;height:14px}
@@ -92,15 +93,15 @@ section{padding-block:clamp(56px,8vw,104px)}
 .dd-menu a span{font-size:13px;color:var(--muted);line-height:1.3}
 .dd-menu a:hover{background:var(--card)}
 .nav-actions{display:flex;align-items:center;gap:10px;flex:none}
-.btn-nav{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:99px;background:var(--orange);color:#fff;font:600 14px/1 var(--disp);text-decoration:none;transition:background .2s,transform .2s,box-shadow .2s}
+.btn-nav{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:99px;background:#fff;color:var(--orange);font:600 14px/1 var(--disp);text-decoration:none;transition:background .2s,transform .2s,box-shadow .2s}
 .btn-nav svg{width:14px;height:14px;transition:transform .25s}
-.btn-nav:hover{background:var(--orange-d);transform:translateY(-1px);box-shadow:0 12px 22px -12px var(--orange)}
+.btn-nav:hover{background:#EAF1FF;transform:translateY(-1px);box-shadow:0 12px 22px -12px rgba(14,27,51,.6)}
 .btn-nav:hover svg{transform:translateX(3px)}
 .m-cta{display:none}
-.nav-progress{position:absolute;left:0;bottom:-1px;height:3px;width:100%;background:linear-gradient(90deg,var(--orange),#59A6FF);transform:scaleX(0);transform-origin:0 50%;pointer-events:none}
-.menu-btn{display:none;width:44px;height:44px;border:1px solid var(--line);border-radius:12px;background:var(--bg);cursor:pointer;place-items:center;padding:0}
+.nav-progress{position:absolute;left:0;bottom:0;height:3px;width:100%;background:linear-gradient(90deg,#fff,#A9D1FF);transform:scaleX(0);transform-origin:0 50%;pointer-events:none}
+.menu-btn{display:none;width:44px;height:44px;border:1px solid rgba(255,255,255,.55);border-radius:12px;background:rgba(255,255,255,.12);cursor:pointer;place-items:center;padding:0}
 .bars{position:relative;width:18px;height:14px;display:block}
-.bars i{position:absolute;left:0;width:100%;height:2px;border-radius:2px;background:var(--ink);transition:transform .3s ease,opacity .2s,top .3s}
+.bars i{position:absolute;left:0;width:100%;height:2px;border-radius:2px;background:#fff;transition:transform .3s ease,opacity .2s,top .3s}
 .bars i:nth-child(1){top:0}.bars i:nth-child(2){top:6px}.bars i:nth-child(3){top:12px}
 .menu-btn[aria-expanded="true"] .bars i:nth-child(1){top:6px;transform:rotate(45deg)}
 .menu-btn[aria-expanded="true"] .bars i:nth-child(2){opacity:0}
@@ -110,9 +111,10 @@ body.menu-open{overflow:hidden}
 @media(max-width:980px){
   .menu-btn{display:grid}
   .btn-nav{display:none}
-  .links{position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:rgba(255,255,255,.99);border-bottom:1px solid var(--line);padding:8px clamp(18px,4vw,40px) 24px;max-height:calc(100vh - 120px);max-height:calc(100dvh - 120px);overflow:auto;box-shadow:0 30px 50px -30px rgba(14,27,51,.4);opacity:0;visibility:hidden;transform:translateY(-10px);transition:opacity .25s,transform .3s,visibility 0s linear .3s}
+  .links{position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:#fff;border-bottom:1px solid var(--line);padding:8px clamp(18px,4vw,40px) 24px;max-height:calc(100vh - 120px);max-height:calc(100dvh - 120px);overflow:auto;box-shadow:0 30px 50px -30px rgba(14,27,51,.4);opacity:0;visibility:hidden;transform:translateY(-10px);transition:opacity .25s,transform .3s,visibility 0s linear .3s}
   .links.open{opacity:1;visibility:visible;transform:none;transition:opacity .25s,transform .3s,visibility 0s}
-  .links>a,.dd-toggle{font-size:18px;padding:16px 4px;border-bottom:1px solid var(--line);opacity:0;transform:translateY(8px);transition:opacity .3s,transform .3s,color .2s}
+  .links>a,.dd-toggle{font-size:18px;padding:16px 4px;color:var(--ink);border-bottom:1px solid var(--line);opacity:0;transform:translateY(8px);transition:opacity .3s,transform .3s,color .2s}
+  .links>a:hover,.dd-toggle:hover{color:var(--orange)}
   .links.open>a,.links.open .dd-toggle{opacity:1;transform:none}
   .links>a::after,.dd-toggle::after,.dd-toggle svg,.dd::after{display:none}
   .links.open>a:nth-of-type(1){transition-delay:.04s}.links.open .dd-toggle{transition-delay:.12s}.links.open>a:nth-of-type(2){transition-delay:.08s}.links.open>a:nth-of-type(3){transition-delay:.16s}.links.open>a:nth-of-type(4){transition-delay:.2s}.links.open>a:nth-of-type(5){transition-delay:.24s}
@@ -287,6 +289,10 @@ body.menu-open{overflow:hidden}
 
 .exp-side .where{color:var(--muted);font-size:14px}
 
+.book{margin-top:26px;display:grid;gap:12px;justify-items:start}
+.book p{margin:0;color:var(--ink);font-weight:600}
+.book .btn svg{width:18px;height:18px}
+
 footer{border-top:1px solid var(--line);color:var(--muted);font-size:14px}
 footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:26px}
 
@@ -316,14 +322,15 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
 .reveal.pre{opacity:0;--ty:14px}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal,.tile{transition:none}.reveal.pre{opacity:1;--ty:0px}}
 </style>
+<link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css">
 </head>
 <body>
 <div class="bg" aria-hidden="true"><i></i><i></i><i></i></div>
 <header class="nav" id="nav">
-  <div class="topbar"><div class="wrap"><span class="avail"><i></i>Available for full-time and project roles</span><span class="topinfo">Fully remote &middot; US, European &amp; Asian hours</span></div></div>
+  <div class="topbar"><div class="wrap"><span class="avail"><i></i>Available for full-time and project roles</span><span class="topinfo">Flexible hours</span></div></div>
   <div class="mainbar">
     <div class="wrap">
-      <a class="brand" href="#home" aria-label="Anthony Marquez, home"><span class="mark">AM</span><span class="brand-text"><b>Anthony Marquez</b><small>Executive Assistant &amp; Operations</small></span></a>
+      <a class="brand" href="#home" aria-label="Anthony Marquez, home"><span class="mark"><img src="img/portrait.webp" alt="" width="44" height="44" onerror="this.style.display='none'"></span><span class="brand-text"><b>Anthony Marquez</b><small>Executive Assistant &amp; Operations</small></span></a>
       <nav class="links" id="links" aria-label="Main">
         <a href="#about">About</a>
         <a href="#services">Services</a>
@@ -332,7 +339,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
           <div class="dd-menu">
             <a href="#work"><b>Case Studies</b><span>Results, with the numbers</span></a>
             <a href="#experience"><b>Experience</b><span>Where I have worked</span></a>
-            <a href="email-samples.html"><b>Sample Work</b><span>HTML emails and more</span></a>
+            <a href="email-samples.html"><b>Sample Work</b><span>Email designs and more</span></a>
           </div>
         </div>
         <a href="#tools">Tools</a>
@@ -356,7 +363,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
       <h1><span>Anthony</span><span>Marquez</span></h1>
       <p class="role">Executive Assistant &amp; Operations Professional</p>
       <p class="lede">I help busy leaders stay organized, keep operations moving, and get important work done.</p>
-      <div class="btns"><a class="btn" href="#contact">Get in touch</a><a class="btn ghost" href="#work">View work</a></div>
+      <div class="btns"><a class="btn" href="#contact">Get in touch</a><a class="btn ghost" href="#work">View work</a><a class="btn ghost" data-calendly href="#" target="_blank" rel="noopener">Book a call</a></div>
     </div>
     <figure class="portrait">
       <div class="disc"><img src="img/portrait.webp" alt="Portrait of Anthony Marquez" width="750" height="750" fetchpriority="high" decoding="async"></div>
@@ -370,7 +377,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
   </div>
 </section>
 
-<div class="ticker" aria-label="Skills"><div class="track"><span class="chip">Executive Support</span><span class="chip">Calendar Management</span><span class="chip">CRM Management</span><span class="chip">Lead Generation</span><span class="chip">Recruitment</span><span class="chip">Email Marketing</span><span class="chip">Client Communication</span><span class="chip">Team Coordination</span><span class="chip" aria-hidden="true">Executive Support</span><span class="chip" aria-hidden="true">Calendar Management</span><span class="chip" aria-hidden="true">CRM Management</span><span class="chip" aria-hidden="true">Lead Generation</span><span class="chip" aria-hidden="true">Recruitment</span><span class="chip" aria-hidden="true">Email Marketing</span><span class="chip" aria-hidden="true">Client Communication</span><span class="chip" aria-hidden="true">Team Coordination</span></div><div class="track rev"><span class="chip">Social Media</span><span class="chip">Content Strategy</span><span class="chip">Graphic Design</span><span class="chip">Process Improvement</span><span class="chip">AI Tools</span><span class="chip">Automation</span><span class="chip">Brand Launches</span><span class="chip">Workshop Marketing</span><span class="chip" aria-hidden="true">Social Media</span><span class="chip" aria-hidden="true">Content Strategy</span><span class="chip" aria-hidden="true">Graphic Design</span><span class="chip" aria-hidden="true">Process Improvement</span><span class="chip" aria-hidden="true">AI Tools</span><span class="chip" aria-hidden="true">Automation</span><span class="chip" aria-hidden="true">Brand Launches</span><span class="chip" aria-hidden="true">Workshop Marketing</span></div></div>
+<div class="ticker" aria-label="Skills"><div class="track"><span class="chip">Executive Support</span><span class="chip">Calendar Management</span><span class="chip">CRM Management</span><span class="chip">Lead Generation</span><span class="chip">Recruitment</span><span class="chip">Email Marketing</span><span class="chip">Client Communication</span><span class="chip">Team Coordination</span><span class="chip" aria-hidden="true">Executive Support</span><span class="chip" aria-hidden="true">Calendar Management</span><span class="chip" aria-hidden="true">CRM Management</span><span class="chip" aria-hidden="true">Lead Generation</span><span class="chip" aria-hidden="true">Recruitment</span><span class="chip" aria-hidden="true">Email Marketing</span><span class="chip" aria-hidden="true">Client Communication</span><span class="chip" aria-hidden="true">Team Coordination</span></div><div class="track rev"><span class="chip">Social Media</span><span class="chip">Content Strategy</span><span class="chip">Graphic Design</span><span class="chip">Process Improvement</span><span class="chip">AI Tools</span><span class="chip">Automation</span><span class="chip">Brand Launches</span><span class="chip">Workshop Hosting</span><span class="chip" aria-hidden="true">Social Media</span><span class="chip" aria-hidden="true">Content Strategy</span><span class="chip" aria-hidden="true">Graphic Design</span><span class="chip" aria-hidden="true">Process Improvement</span><span class="chip" aria-hidden="true">AI Tools</span><span class="chip" aria-hidden="true">Automation</span><span class="chip" aria-hidden="true">Brand Launches</span><span class="chip" aria-hidden="true">Workshop Hosting</span></div></div>
 
 <section style="padding-top:0">
   <div class="wrap feat">
@@ -439,11 +446,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
       </article>
       <article class="case reveal">
         <div class="vis"><div class="big" aria-hidden="true"><b>700+</b><span>additional enrollments within one week of launch</span></div></div>
-        <div><p class="meta">2023 to 2025 &middot; Private ESL School, France</p><h3>Game-Based English Program for a Private ESL School</h3><p>Project-based work with a French private ESL school, incorporating popular games like Pok&eacute;mon, Roblox and Call of Duty into a program for teenagers and kids. Designed the approach to make lessons more engaging and relevant to students while creating a differentiated offering for the school.</p><ul class="tags"><li>Project-Based Work</li><li>Program Development</li><li>ESL</li><li>Pok&eacute;mon</li><li>Roblox</li><li>Call of Duty</li></ul></div>
+        <div><p class="meta">2023 to 2025 &middot; Online School, Vietnam</p><h3>Game-Based English Program for an Online School</h3><p>Project-based work with a Vietnamese online school, incorporating popular games like Pok&eacute;mon, Roblox and Call of Duty into a program for teenagers and kids. Designed the approach to make lessons more engaging and relevant to students while creating a differentiated offering for the school.</p><ul class="tags"><li>Project-Based Work</li><li>Program Development</li><li>Online Education</li><li>Pok&eacute;mon</li><li>Roblox</li><li>Call of Duty</li></ul></div>
       </article>
       <article class="case reveal">
-        <div class="vis"><div class="res"><b>2 countries</b><span>new lead channel across France and the UK</span></div><img src="img/work-workshop.jpg" width="1800" height="1007" alt="Participants attending an online educational workshop" loading="lazy"></div>
-        <div><p class="meta">2024 to 2025 &middot; Certification, France &amp; UK</p><h3>Lead Generation &amp; Workshop Marketing</h3><p>Spearheaded a lead-generation initiative for a France-based certification company working with the French government, introducing free educational workshops for prospective trainees. Developed the workshops as a value-first strategy to engage prospects, build trust, and introduce the company's certification programs after each session, creating a structured channel from educational content to certification sales.</p><ul class="tags"><li>Lead Generation</li><li>Marketing Strategy</li><li>Workshop Marketing</li><li>Student Acquisition</li><li>Conversion Strategy</li></ul></div>
+        <div class="vis"><div class="res"><b>New lead channel</b><span>from free workshops to certification sales</span></div><img src="img/work-workshop.jpg" width="1800" height="1007" alt="Participants attending an online educational workshop" loading="lazy"></div>
+        <div><p class="meta">2024 to 2025 &middot; Certification, France</p><h3>Lead Generation &amp; Workshop Hosting</h3><p>Led a lead-generation initiative for a France-based certification company working with the French government, hosting free educational workshops that helped English-speaking European professionals transition into new work through the company's workshop and training program. Hosted each session as a value-first approach to engage prospects, build trust, and introduce the company's certification programs afterward, creating a structured channel from educational content to certification sales.</p><ul class="tags"><li>Lead Generation</li><li>Marketing Strategy</li><li>Workshop Hosting</li><li>Professional Training</li><li>Conversion Strategy</li></ul></div>
       </article>
     </div>
   </div>
@@ -505,7 +512,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
     <div class="sec-head"><small>Tools</small><h2>Tools I work with</h2></div>
     <div class="tool-rows">
       <div class="trow reveal"><h3>Sales, CRM &amp; outreach</h3><ul class="tiles"><li class="tile"><span class="lg"><img src="img/tool-ghl.png" alt=""></span><span class="tn">GoHighLevel</span></li><li class="tile"><span class="lg"><img src="img/tool-inst.png" alt=""></span><span class="tn">Instantly AI</span></li><li class="tile"><span class="lg"><img src="img/tool-apollo.svg" alt=""></span><span class="tn">Apollo</span></li><li class="tile"><span class="lg"><img src="img/tool-klaviyo.png" alt=""></span><span class="tn">Klaviyo</span></li><li class="tile"><span class="lg"><img src="img/tool-stripe.svg" alt=""></span><span class="tn">Stripe</span></li></ul></div>
-      <div class="trow reveal"><h3>Workspace &amp; automation</h3><ul class="tiles"><li class="tile"><span class="lg"><img src="img/tool-google.svg" alt=""></span><span class="tn">Google Workspace</span></li><li class="tile"><span class="lg"><img src="img/tool-make.svg" alt=""></span><span class="tn">Make</span></li><li class="tile"><span class="lg"><img src="img/tool-slack.svg" alt=""></span><span class="tn">Slack</span></li><li class="tile"><span class="lg"><img src="img/tool-zoom.svg" alt=""></span><span class="tn">Zoom</span></li><li class="tile"><span class="lg"><img src="img/tool-ionos.svg" alt=""></span><span class="tn">IONOS</span></li></ul></div>
+      <div class="trow reveal"><h3>Workspace &amp; automation</h3><ul class="tiles"><li class="tile"><span class="lg"><img src="img/tool-google.svg" alt=""></span><span class="tn">Google Workspace</span></li><li class="tile"><span class="lg"><img src="img/tool-make.svg" alt=""></span><span class="tn">Make</span></li><li class="tile"><span class="lg"><img src="img/tool-slack.svg" alt=""></span><span class="tn">Slack</span></li><li class="tile"><span class="lg"><img src="img/tool-zoom.svg" alt=""></span><span class="tn">Zoom</span></li><li class="tile"><span class="lg"><img src="https://cdn.simpleicons.org/ionos" alt=""></span><span class="tn">IONOS</span></li></ul></div>
       <div class="trow reveal"><h3>Design &amp; social</h3><ul class="tiles"><li class="tile"><span class="lg"><img src="img/tool-canva.svg" alt=""></span><span class="tn">Canva</span></li><li class="tile"><span class="lg"><img src="img/tool-photoshop.svg" alt=""></span><span class="tn">Photoshop</span></li><li class="tile"><span class="lg"><img src="img/tool-figma.svg" alt=""></span><span class="tn">Figma</span></li><li class="tile"><span class="lg"><img src="img/tool-meta.svg" alt=""></span><span class="tn">Meta Business Suite</span></li></ul></div>
     </div>
   </div>
@@ -529,9 +536,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
       <p>Open to new opportunities. Send me a message and I'll get back to you within one to two business days.</p>
       <ul class="promise">
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Reply within 1 to 2 business days</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Flexible with any time zone</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Flexible hours, in any time zone</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Fully remote, ready to start</li>
       </ul>
+      <div class="book"><p>Prefer to talk it through?</p><a class="btn" data-calendly href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Book a call</a></div>
     </div>
     <div class="form-frame">
       <div class="form-crop"><iframe data-src="https://reports.gallaghersresource.com/f/gallaghers-resource/anthony-marquez" title="Contact form for Anthony Marquez" scrolling="no"></iframe><noscript><a href="https://reports.gallaghersresource.com/f/gallaghers-resource/anthony-marquez">Open the contact form</a></noscript></div>
@@ -642,6 +650,28 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
 </script>
 <script>
 if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){})})}
+</script>
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script>
+(function(){
+  // 1) Put your Calendly link here (the only place you need to change it)
+  var CAL='https://calendly.com/teacheranth10tesolcall/discovery-call-tony';
+
+  var btns=[].slice.call(document.querySelectorAll('[data-calendly]'));
+  var ready=!/YOUR-USERNAME/.test(CAL);
+  if(!ready){
+    // Link not set yet: keep the buttons hidden so visitors never see a broken one
+    btns.forEach(function(b){b.hidden=true});
+    var bk=document.querySelector('.book');if(bk)bk.hidden=true;
+    return;
+  }
+  btns.forEach(function(b){
+    b.href=CAL;
+    b.addEventListener('click',function(e){
+      if(window.Calendly&&Calendly.initPopupWidget){e.preventDefault();Calendly.initPopupWidget({url:CAL})}
+    });
+  });
+})();
 </script>
 </body>
 </html>
